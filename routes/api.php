@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\V1\AuthController;
+use App\Http\Controllers\V1\WalletController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('v1')->group(function () {
+    Route::post('login', [AuthController::class, 'authenticate']);
+    Route::post('register', [AuthController::class, 'register']);
+    Route::group(['middleware' => ['jwt.verify']], function () {
+        Route::post('logout', [AuthController::class, 'logout']);
+        Route::post('get-user', [AuthController::class, 'getUser']);
+        Route::post('wallets', [WalletController::class, 'store']);
+        Route::put('wallets/{id}', [WalletController::class, 'update']);
+        Route::delete('wallets/{id}', [WalletController::class, 'destroy']);
+    });
 });

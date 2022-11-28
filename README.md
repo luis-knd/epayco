@@ -37,6 +37,7 @@ docker-compose ps
 checking that all containers are up.
 
 ### 5. Create JWT_SECRET key
+
 Enter to console execute:
 
 ```bash
@@ -50,6 +51,7 @@ php artisan jwt:secret
 ```
 
 ### 6. Execute migrations and seeders
+
 Inside the container and positioned on the path `/var/www/html`, execute the next command:
 
 ```bash
