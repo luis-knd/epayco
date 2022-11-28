@@ -11,7 +11,7 @@ Tech test from ePayco for backend developers.
 ### 1. Clone the project
 
 ```bash
-git clone git@bitbucket.org:lcandesignteam/epaycoapi.git
+git clone https://github.com/luis-knd/epayco.git
 ```
 
 ### 2. Create `.env` files
